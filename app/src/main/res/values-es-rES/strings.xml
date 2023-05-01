@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email_login">Correo Electrónico</string>
+    <string name="password_login">Contraseña</string>
+    <string name="login_login">Acceder</string>
+    <string name="store_user_login">¿Almacenar los datos de aceso?</string>
+    <string name="login_data_removed">Datos de acceso eliminados.</string>
+    <string name="login_data_saved">Datos de acceso almacenados</string>
+</resources>

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">PracticaFundamentosAndroid</string>
+    <string name="app_name" translatable="false">PracticaFundamentosAndroid</string>
+    <string name="email_login">E-mail</string>
+    <string name="password_login">Password</string>
+    <string name="login_login">Log In</string>
+    <string name="store_user_login">Save login data?</string>
+    <string name="login_data_removed">Login data removed</string>
+    <string name="login_data_saved">Login data saved.</string>
+
 </resources>
