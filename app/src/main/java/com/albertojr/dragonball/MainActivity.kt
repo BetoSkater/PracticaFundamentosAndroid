@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 when (it){
                     is LoginViewModel.UiState.Started ->  Log.w("TAG", "Started")
                     is LoginViewModel.UiState.Ended -> Log.w("TAG", "Ended")
-                    is LoginViewModel.UiState.OnLoginCompleted -> Log.w("TAG","Token obtenido con exito ${viewModel.token}")
+                    is LoginViewModel.UiState.OnLoginCompleted -> CoreActivity.launch(binding.swSave.context, viewModel.token)
                     is LoginViewModel.UiState.Error -> Log.w("TAG", "Error en UiState")
 
                 }
