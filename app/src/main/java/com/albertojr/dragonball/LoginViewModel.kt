@@ -16,7 +16,7 @@ import okhttp3.Request
 
 class LoginViewModel() : ViewModel(){
 
-    val baseUrl = "https://dragonball.keepcoding.education"
+    private val baseUrl = "https://dragonball.keepcoding.education"
 
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Started(true))
