@@ -41,7 +41,7 @@ class LoginViewModel() : ViewModel(){
             response.body?.let { responseBody ->
                 token = responseBody.string()
                 Log.w("TAG", "El token obtenido en el viewmodel es $token")
-                _uiState.value = UiState.OnLoginCompleted(responseBody.string())
+                _uiState.value = UiState.OnLoginCompleted(token)
             } ?: run {Log.w("TAG", "Error detected")}
         }
     }
