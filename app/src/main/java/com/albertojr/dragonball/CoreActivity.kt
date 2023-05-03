@@ -32,6 +32,10 @@ class CoreActivity : AppCompatActivity() {
         setContentView(binding.root)
         retrieveToken()
 
+        binding.tvTitle.setOnClickListener {
+            addFragment()
+        }
+
         lifecycleScope.launch{
             viewModelCA.uiState.collect{
                 when (it){
@@ -49,5 +53,18 @@ class CoreActivity : AppCompatActivity() {
     private fun retrieveToken(){
         viewModelCA.token = intent.getStringExtra(TAG_TOKEN).toString()
         binding.tvTitle.text = viewModelCA.token
+    }
+
+    private fun addFragment(){
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fFragment.id,HeroesListFragment()) //TODO pass context in here if needed
+            .commitNow()
+    }
+    private fun addFragmentTwo(){
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fFragment.id,FightFragment()) //TODO pass context in here if needed
+            .commitNow()
     }
 }

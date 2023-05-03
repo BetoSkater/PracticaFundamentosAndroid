@@ -12,7 +12,19 @@
         android:layout_height="wrap_content"
 
         android:text="Sample text"
+        app:layout_constraintBottom_toTopOf="@+id/fFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fFragment"
+        android:layout_width="409dp"
+        android:layout_height="710dp"
+        android:background="#8694EA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
