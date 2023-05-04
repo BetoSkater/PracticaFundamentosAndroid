@@ -33,7 +33,7 @@ class CoreActivity : AppCompatActivity() {
         retrieveToken()
 
         binding.tvTitle.setOnClickListener {
-            addFragment()
+            //addFragment() //TODO El error que salta es que un lateinitvar no se ha inicializado
         }
 
         lifecycleScope.launch{
@@ -41,9 +41,12 @@ class CoreActivity : AppCompatActivity() {
                 when (it){
                     is CoreViewModel.UiStateCA.Started ->  viewModelCA.retrieveHeroesList()
                     is CoreViewModel.UiStateCA.Ended -> Log.w("TAG", "Ended")
-                    is CoreViewModel.UiStateCA.OnHeroesRetrieved -> binding.tvTitle.text = it.heroesList.toString() //TODO se obtiene el listado de heroes bien
+                    is CoreViewModel.UiStateCA.OnHeroesRetrieved -> {
+                        addHeroesListFragment()
+                        binding.tvTitle.text = getString(R.string.heroes_list_title)
+                    }//TODO se obtiene el listado de heroes bien
                     is CoreViewModel.UiStateCA.Error -> Log.w("TAG", "Error en UiState")
-
+                    is CoreViewModel.UiStateCA.OnHeroeSelectedToFight -> addFragmentTwo()
                 }
             }
         }
@@ -55,7 +58,7 @@ class CoreActivity : AppCompatActivity() {
         binding.tvTitle.text = viewModelCA.token
     }
 
-    private fun addFragment(){
+    private fun addHeroesListFragment(){
         supportFragmentManager
             .beginTransaction()
             .replace(binding.fFragment.id,HeroesListFragment()) //TODO pass context in here if needed
@@ -67,4 +70,14 @@ class CoreActivity : AppCompatActivity() {
             .replace(binding.fFragment.id,FightFragment()) //TODO pass context in here if needed
             .commitNow()
     }
+
+    fun changeFragment(nextFragment: FragmentOptions){
+        when(nextFragment){
+            FragmentOptions.HeroeListFragment -> addHeroesListFragment()
+            FragmentOptions.FightFragment -> addFragmentTwo()
+        }
+    }
+}
+enum class FragmentOptions{
+    HeroeListFragment, FightFragment
 }

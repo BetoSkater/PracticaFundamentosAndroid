@@ -7,5 +7,7 @@ data class Heroe(
     val favorite: Boolean,
     val description: String,
     val name: String,
-    var hitPoints : Int = 100
+    var totalHitPoints : Int = 100,
+    var currentHitPoints : Int = 100,
+    var isDead : Boolean = false
 )

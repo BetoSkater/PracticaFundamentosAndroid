@@ -9,9 +9,9 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="Sample text"
+android:layout_height="wrap_content"
+        android:text="@string/heroes_list_title"
+        android:fontFamily="@font/ka1"
         app:layout_constraintBottom_toTopOf="@+id/fFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,12 +19,13 @@
 
     <FrameLayout
         android:id="@+id/fFragment"
-        android:layout_width="409dp"
-        android:layout_height="710dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="#8694EA"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" >
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

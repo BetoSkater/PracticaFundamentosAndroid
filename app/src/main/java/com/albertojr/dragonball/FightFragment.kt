@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.albertojr.dragonball.databinding.FragmentFightBinding
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +27,8 @@ class FightFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
     }
 
     override fun onCreateView(
@@ -32,7 +37,32 @@ class FightFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFightBinding.inflate(inflater)
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            coreViewModel.uiState.collect{
+                //TODO Preguntar por que eso funciona
+              //  binding.tvFigterName.text = (it as CoreViewModel.UiStateCA.OnHeroeSelectedToFight).heroe.name
+                    binding.tvFigterName.text = coreViewModel.selectedHeroe.name
+                    Picasso.get().load(coreViewModel.selectedHeroe.photo).into(binding.ivFighter)
+                    binding.pbFighterHitPoints.max = coreViewModel.selectedHeroe.totalHitPoints
+                    binding.pbFighterHitPoints.progress = coreViewModel.selectedHeroe.currentHitPoints
+
+
+
+            }
+        }
+        setFightButtonsOnClickMethods()
         return binding.root
+    }
+
+    private fun setFightButtonsOnClickMethods(){
+        binding.bnHeal.setOnClickListener {
+            coreViewModel.healHeroe()
+        }
+        binding.bnAtack.setOnClickListener {
+            coreViewModel.damageHeroe()
+        }
     }
 
 

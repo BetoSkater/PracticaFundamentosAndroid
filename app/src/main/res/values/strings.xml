@@ -6,5 +6,8 @@
     <string name="store_user_login">Save login data?</string>
     <string name="login_data_removed">Login data removed</string>
     <string name="login_data_saved">Login data saved.</string>
+    <string name="heroes_list_title">Choose your hero!</string>
+    <string name="fight_heal">HEAL!</string>
+    <string name="fight_attack">ATTACK!</string>
 
 </resources>

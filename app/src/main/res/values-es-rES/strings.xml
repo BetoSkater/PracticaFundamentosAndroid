@@ -6,4 +6,7 @@
     <string name="store_user_login">¿Almacenar los datos de aceso?</string>
     <string name="login_data_removed">Datos de acceso eliminados.</string>
     <string name="login_data_saved">Datos de acceso almacenados</string>
+    <string name="heroes_list_title">Selecciona tu heroe</string>
+    <string name="fight_heal">CURAR!</string>
+    <string name="fight_attack">ATACA!</string>
 </resources>
