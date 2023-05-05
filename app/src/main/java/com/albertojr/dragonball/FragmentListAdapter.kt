@@ -59,7 +59,7 @@ class FragmentListAdapter(
                     item.ivHeroePicture.alpha = 0.6F
                     item.heroeCell.isClickable = false
                 }else{
-                    item.ivHeroePicture.foreground = ContextCompat.getDrawable(item.ivHeroePicture.context, R.drawable.alive_character_filter)
+                    item.ivHeroePicture.foreground = ContextCompat.getDrawable(item.ivHeroePicture.context, R.drawable.gradient)
                     item.ivHeroePicture.alpha = 1.0F
                     item.heroeCell.isClickable = true
                 }

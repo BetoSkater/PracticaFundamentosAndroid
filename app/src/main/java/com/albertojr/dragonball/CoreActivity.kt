@@ -46,7 +46,11 @@ class CoreActivity : AppCompatActivity() {
                         binding.tvTitle.text = getString(R.string.heroes_list_title)
                     }//TODO se obtiene el listado de heroes bien
                     is CoreViewModel.UiStateCA.Error -> Log.w("TAG", "Error en UiState")
-                    is CoreViewModel.UiStateCA.OnHeroeSelectedToFight -> addFragmentTwo()
+                    is CoreViewModel.UiStateCA.OnHeroeSelectedToFight -> {
+                        addFragmentTwo()
+                        binding.tvTitle.text = getString(R.string.fight_title)
+
+                    }
                     is  CoreViewModel.UiStateCA.OnHeroIsDead -> {
                         addHeroesListFragment()
                         binding.tvTitle.text = getString(R.string.heroes_list_title)

@@ -1,10 +1,13 @@
 package com.albertojr.dragonball
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -33,18 +36,22 @@ class HeroesListFragment : Fragment(),onClickGridItem {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHeroesListBinding.inflate(inflater)
+        setFloatingHealAllHeroesButton()
+
+        val adapter = FragmentListAdapter(coreViewModel.heroesList,this)
+        // binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
+        binding.rvHeroesList.layoutManager = GridLayoutManager(binding.rvHeroesList.context,2)
+        binding.rvHeroesList.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch{
             coreViewModel.uiState.collect{
                 //TODO add the listVIewRefreshermethod in here
+                adapter.notifyDataSetChanged()
             }
         }
 
 
-        val adapter = FragmentListAdapter(coreViewModel.heroesList,this)
-       // binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
-        binding.rvHeroesList.layoutManager = GridLayoutManager(binding.rvHeroesList.context,2)
-        binding.rvHeroesList.adapter = adapter
+
 
         return binding.root
     }
@@ -53,5 +60,37 @@ class HeroesListFragment : Fragment(),onClickGridItem {
         coreViewModel.selectedHeroToFightClicked(heroe)
     }
 
+    private fun setFloatingHealAllHeroesButton(){
+        binding.fabHealAllHeroes.setOnClickListener {
+            showHealAllHeroesAlertDialog()
+        }
+    }
+
+    private fun showHealAllHeroesAlertDialog(){
+        val builder = AlertDialog.Builder(binding.fabHealAllHeroes.context)
+        val view = layoutInflater.inflate(R.layout.custom_alert_dialog,null)
+
+        builder.setView(view)
+        builder.setTitle(R.string.alert_dialog_title)
+
+        builder.setPositiveButton(getString(R.string.alert_dialog_yes)){dialogInterface, which ->
+            //Toast.makeText(binding.fabHealAllHeroes.context,"clicked yes", Toast.LENGTH_LONG).show()
+            alertHealAllHeroesClicked()
+        }
+
+        builder.setNegativeButton(getString(R.string.alert_dialog_cancel)){dialogInterface, which ->
+
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(binding.fabHealAllHeroes.context,R.color.red_dragon))
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(binding.fabHealAllHeroes.context,R.color.green_dragon))
+
+    }
+
+    private fun alertHealAllHeroesClicked(){
+        coreViewModel.healAllHeroes()
+    }
 
 }

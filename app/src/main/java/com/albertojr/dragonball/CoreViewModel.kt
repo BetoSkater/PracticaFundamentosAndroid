@@ -88,11 +88,13 @@ class CoreViewModel: ViewModel() {
     }
 
 
-    fun fightOnClickMethod(buttonId: String){
+    fun fightOnClickMethod(buttonTag: String){
         var hpModifier = 0
-        when(buttonId){
-            "2131296762" -> hpModifier = healHeroe() //0 or positive value
-            "2131296761" -> hpModifier = damageHeroe() //negative value between (-60, -10)
+        _uiStateCA.value = UiStateCA.Idle
+
+        when(buttonTag){
+            "heal" -> hpModifier = healHeroe() //0 or positive value
+            "attack" -> hpModifier = damageHeroe() //negative value between (-60, -10)
             else -> Log.e("TAG", "Error, non valid button clicked")
         }
 
@@ -116,6 +118,18 @@ class CoreViewModel: ViewModel() {
 
     }
 
+    fun healAllHeroes(){
+        _uiStateCA.value = UiStateCA.Idle
+
+        heroesList.forEach {
+            it.currentHitPoints = 100
+            it.isDead = false
+        }
+
+        _uiStateCA.value = UiStateCA.OnHeroeHPChange
+    }
+
+
     sealed class UiStateCA{
         data class Started(val started: Boolean) : UiStateCA()
         object Ended : UiStateCA()
@@ -124,6 +138,8 @@ class CoreViewModel: ViewModel() {
         data class OnHeroeSelectedToFight(var heroe: Heroe) : UiStateCA()
         object OnHeroeHPChange: UiStateCA()
         object OnHeroIsDead: UiStateCA()
+        object Idle: UiStateCA()
 
     }
+
 }

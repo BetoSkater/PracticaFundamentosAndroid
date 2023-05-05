@@ -9,5 +9,9 @@
     <string name="heroes_list_title">Choose your hero!</string>
     <string name="fight_heal">HEAL!</string>
     <string name="fight_attack">ATTACK!</string>
+    <string name="fight_title">The fight has already started!</string>
+    <string name="alert_dialog_title">All heroes will be healed. ¿Continue?</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="alert_dialog_yes">Yes</string>
 
 </resources>
