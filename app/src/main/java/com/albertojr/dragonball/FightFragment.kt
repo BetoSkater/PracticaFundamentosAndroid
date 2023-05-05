@@ -50,6 +50,7 @@ class FightFragment : Fragment() {
 
 
 
+
             }
         }
         setFightButtonsOnClickMethods()
@@ -58,10 +59,10 @@ class FightFragment : Fragment() {
 
     private fun setFightButtonsOnClickMethods(){
         binding.bnHeal.setOnClickListener {
-            coreViewModel.healHeroe()
+            coreViewModel.fightOnClickMethod(binding.bnHeal.id.toString())
         }
         binding.bnAtack.setOnClickListener {
-            coreViewModel.damageHeroe()
+            coreViewModel.fightOnClickMethod(binding.bnAtack.id.toString())
         }
     }
 

@@ -47,6 +47,11 @@ class CoreActivity : AppCompatActivity() {
                     }//TODO se obtiene el listado de heroes bien
                     is CoreViewModel.UiStateCA.Error -> Log.w("TAG", "Error en UiState")
                     is CoreViewModel.UiStateCA.OnHeroeSelectedToFight -> addFragmentTwo()
+                    is  CoreViewModel.UiStateCA.OnHeroIsDead -> {
+                        addHeroesListFragment()
+                        binding.tvTitle.text = getString(R.string.heroes_list_title)
+                    }
+                    else -> Unit
                 }
             }
         }

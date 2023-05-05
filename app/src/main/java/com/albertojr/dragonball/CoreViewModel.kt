@@ -1,6 +1,7 @@
 package com.albertojr.dragonball
 
 import android.util.Log
+import android.widget.Button
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
@@ -63,7 +64,7 @@ class CoreViewModel: ViewModel() {
         _uiStateCA.value = UiStateCA.OnHeroeSelectedToFight(heroe)
     }
 
-     fun healHeroe(){
+     private fun healHeroe(): Int{
         var healValue = 20
         selectedHeroe.let {
             when(selectedHeroe.currentHitPoints){
@@ -72,16 +73,47 @@ class CoreViewModel: ViewModel() {
                 else -> healValue= 20
             }
         }
-        selectedHeroe.currentHitPoints += healValue
+      //  selectedHeroe.currentHitPoints += healValue
+         return healValue
     }
 
-     fun damageHeroe(){
-        val damage = Random.nextInt(10,60)
-
+     private fun damageHeroe():Int{
+        val damage = Random.nextInt(-60,-10)
+/*
         selectedHeroe.let {
             selectedHeroe.currentHitPoints = selectedHeroe.currentHitPoints - damage
             if (selectedHeroe.currentHitPoints <= 0) selectedHeroe.isDead = true
+        }*/
+         return damage
+    }
+
+
+    fun fightOnClickMethod(buttonId: String){
+        var hpModifier = 0
+        when(buttonId){
+            "2131296762" -> hpModifier = healHeroe() //0 or positive value
+            "2131296761" -> hpModifier = damageHeroe() //negative value between (-60, -10)
+            else -> Log.e("TAG", "Error, non valid button clicked")
         }
+
+        selectedHeroe.let {
+            it.currentHitPoints = it.currentHitPoints + hpModifier
+            if(it.currentHitPoints <=0){
+                it.isDead = true
+                val position = heroesList.indexOf(it)
+
+                heroesList[position].currentHitPoints = it.currentHitPoints
+                heroesList[position].isDead = it.isDead
+
+                _uiStateCA.value = UiStateCA.OnHeroIsDead
+
+            }else{
+                _uiStateCA.value = UiStateCA.OnHeroeHPChange
+
+            }
+        }
+
+
     }
 
     sealed class UiStateCA{
@@ -90,6 +122,8 @@ class CoreViewModel: ViewModel() {
         data class Error(val error: String): UiStateCA()
         data class OnHeroesRetrieved(val heroesList: List<Heroe>) : UiStateCA() //TODO cambiar token por lista
         data class OnHeroeSelectedToFight(var heroe: Heroe) : UiStateCA()
+        object OnHeroeHPChange: UiStateCA()
+        object OnHeroIsDead: UiStateCA()
 
     }
 }

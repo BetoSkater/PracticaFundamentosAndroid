@@ -1,9 +1,11 @@
 package com.albertojr.dragonball
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ScrollCaptureCallback
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.albertojr.dragonball.databinding.HeroeCellBinding
 import com.squareup.picasso.Picasso
@@ -46,12 +48,23 @@ class FragmentListAdapter(
                 //TODO addd a method to calculate the hp % and add it to the progressbar
                 item.pbHitPoint.max = heroe.totalHitPoints
                 item.pbHitPoint.progress = heroe.currentHitPoints
-
                 item.heroeCell.setOnClickListener {
                     Toast.makeText(item.root.context, "El luchador es ${heroe.name}", Toast.LENGTH_LONG).show()
 
                     callback.onClick(heroe)
                 }
+
+                if(heroe.isDead){
+                    item.ivHeroePicture.foreground = ContextCompat.getDrawable(item.ivHeroePicture.context, R.drawable.dead_character_filter)
+                    item.ivHeroePicture.alpha = 0.6F
+                    item.heroeCell.isClickable = false
+                }else{
+                    item.ivHeroePicture.foreground = ContextCompat.getDrawable(item.ivHeroePicture.context, R.drawable.alive_character_filter)
+                    item.ivHeroePicture.alpha = 1.0F
+                    item.heroeCell.isClickable = true
+                }
+
+
             }
         }
     }
