@@ -1,10 +1,12 @@
 package com.albertojr.dragonball
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -64,7 +66,17 @@ class FightFragment : Fragment() {
         binding.bnAtack.setOnClickListener {
             coreViewModel.fightOnClickMethod(binding.bnAtack.tag.toString())
         }
+        binding.faTimesSelected.setOnClickListener {
+            timesSelectedToast(it.context)
+        }
     }
+    private fun timesSelectedToast(context: Context){
+        val heroeName = coreViewModel.selectedHeroe.name
+        val timesSelected = coreViewModel.selectedHeroe.timesSlected
+        val toastString = getString(R.string.times_selected_string)
 
+        Toast.makeText(context, "$heroeName, $toastString  $timesSelected" , Toast.LENGTH_LONG).show()
+
+    }
 
 }

@@ -13,4 +13,5 @@
     <string name="alert_dialog_title">Todos los heroes serán curados. ¿Continuar?</string>
     <string name="alert_dialog_cancel">Cancelar</string>
     <string name="alert_dialog_yes">Si</string>
+    <string name="times_selected_string">Veces seleccionado:</string>
 </resources>

@@ -9,5 +9,6 @@ data class Heroe(
     val name: String,
     var totalHitPoints : Int = 100,
     var currentHitPoints : Int = 100,
-    var isDead : Boolean = false
+    var isDead : Boolean = false,
+    var timesSlected: Int = 0
 )

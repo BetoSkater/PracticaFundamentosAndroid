@@ -59,6 +59,7 @@ class CoreViewModel: ViewModel() {
     }
 
     fun selectedHeroToFightClicked(heroe: Heroe){
+        heroe.timesSlected = heroe.timesSlected + 1
         selectedHeroe = heroe
 
         _uiStateCA.value = UiStateCA.OnHeroeSelectedToFight(heroe)
