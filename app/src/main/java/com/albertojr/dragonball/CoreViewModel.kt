@@ -129,6 +129,17 @@ class CoreViewModel: ViewModel() {
         _uiStateCA.value = UiStateCA.OnHeroeHPChange
     }
 
+    fun transformHeroListToJson(): String{
+        return Gson().toJson(heroesList)
+    }
+
+    fun heroesListJsonDecoderAndAssigment(jsonString: String){
+        val decodedHeroesJson = Gson().fromJson(jsonString, Array<Heroe>::class.java)
+        heroesList = decodedHeroesJson.toList()
+        _uiStateCA.value = UiStateCA.OnHeroesRetrieved(heroesList)
+    }
+
+
 
     sealed class UiStateCA{
         data class Started(val started: Boolean) : UiStateCA()

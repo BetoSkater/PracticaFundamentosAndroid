@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.albertojr.dragonball.databinding.ActivityCoreBinding
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
 class CoreActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class CoreActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityCoreBinding
     private val viewModelCA : CoreViewModel by viewModels()
+    private val TAG_HEROE_LIST = "MyHeroeList"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCoreBinding.inflate(layoutInflater)
@@ -39,7 +41,7 @@ class CoreActivity : AppCompatActivity() {
         lifecycleScope.launch{
             viewModelCA.uiState.collect{
                 when (it){
-                    is CoreViewModel.UiStateCA.Started ->  viewModelCA.retrieveHeroesList()
+                    is CoreViewModel.UiStateCA.Started ->  retrieveStoredHeroesData()
                     is CoreViewModel.UiStateCA.Ended -> Log.w("TAG", "Ended")
                     is CoreViewModel.UiStateCA.OnHeroesRetrieved -> {
                         addHeroesListFragment()
@@ -62,6 +64,7 @@ class CoreActivity : AppCompatActivity() {
 
     }
 
+
     private fun retrieveToken(){
         viewModelCA.token = intent.getStringExtra(TAG_TOKEN).toString()
         binding.tvTitle.text = viewModelCA.token
@@ -78,12 +81,44 @@ class CoreActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(binding.fFragment.id,FightFragment()) //TODO pass context in here if needed
             .commitNow()
+
     }
 
     fun changeFragment(nextFragment: FragmentOptions){
         when(nextFragment){
             FragmentOptions.HeroeListFragment -> addHeroesListFragment()
             FragmentOptions.FightFragment -> addFragmentTwo()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        storeHeroesData()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        storeHeroesData()
+
+    }
+
+    private fun storeHeroesData(){
+       val myHeroesJson : String = viewModelCA.transformHeroListToJson()
+        getPreferences(Context.MODE_PRIVATE).edit().apply {
+            putString(TAG_HEROE_LIST, myHeroesJson).apply()
+        }
+    }
+
+    private fun retrieveStoredHeroesData(){
+        getPreferences(Context.MODE_PRIVATE).apply {
+            val heroesJson = getString(TAG_HEROE_LIST,"")
+            heroesJson?.let {
+                if(heroesJson == ""){
+                    viewModelCA.retrieveHeroesList()
+                }else{
+                    viewModelCA.heroesListJsonDecoderAndAssigment(heroesJson)
+                }
+            }
+
         }
     }
 }
