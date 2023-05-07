@@ -146,7 +146,7 @@ class CoreViewModel: ViewModel() {
         data class Started(val started: Boolean) : UiStateCA()
         object Ended : UiStateCA()
         data class Error(val error: String): UiStateCA()
-        data class OnHeroesRetrieved(val heroesList: List<Heroe>) : UiStateCA() //TODO cambiar token por lista
+        data class OnHeroesRetrieved(val heroesList: List<Heroe>) : UiStateCA()
         data class OnHeroeSelectedToFight(var heroe: Heroe) : UiStateCA()
         object OnHeroeHPChange: UiStateCA()
         object OnHeroIsDead: UiStateCA()
