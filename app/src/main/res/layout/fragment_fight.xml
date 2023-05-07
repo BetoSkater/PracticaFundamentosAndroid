@@ -4,90 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".FightFragment">
+    android:background="@color/blue_dragon"
+    tools:context=".FightFragment"
+    android:id="@+id/clFightFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/tvFigterName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue_dragon"
-        android:fontFamily="@font/ka1"
-        android:padding="10dp"
-        android:text="Fight fragment"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/pbFighterHitPoints"
-        style="?android:attr/progressBarStyleHorizontal"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvFightHeroeCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/orange_dragon"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFigterName"
-
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="99dp" />
-
-    <ImageView
-        android:id="@+id/ivFighter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxHeight="500dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pbFighterHitPoints"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="15dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-        tools:src="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/tvFigterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ka1"
+                android:padding="10dp"
+                android:text="Fight fragment"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/vSeparator"
-        android:layout_width="wrap_content"
-        android:layout_height="5dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivFighter"
+            <ProgressBar
+                android:id="@+id/pbFighterHitPoints"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFigterName"
+                android:progressBackgroundTint="@color/black"
+                android:progressTint="@color/green_dragon"
+                android:indeterminateTint="@color/red_dragon"
+                tools:layout_editor_absoluteX="168dp"
+                tools:layout_editor_absoluteY="99dp" />
+
+            <ImageView
+                android:id="@+id/ivFighter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pbFighterHitPoints"
+                android:scaleType="centerCrop"
+
+                tools:src="@tools:sample/avatars" />
+
+            <View
+                android:id="@+id/vSeparator"
+                android:layout_width="300dp"
+                android:layout_height="5dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivFighter"
 
 
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="413dp" />
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="413dp" />
 
 
-    <Button
-        android:id="@+id/bnHeal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green_dragon"
-        android:tag="heal"
-        android:text="@string/fight_heal"
-        app:layout_constraintEnd_toEndOf="@id/bnAtack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSeparator" />
+            <Button
+                android:id="@+id/bnHeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green_dragon"
+                android:tag="heal"
+                android:text="@string/fight_heal"
+                app:layout_constraintEnd_toStartOf="@id/bnAtack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vSeparator" />
 
-    <Button
-        android:id="@+id/bnAtack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/red_dragon"
+            <Button
+                android:id="@+id/bnAtack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red_dragon"
 
-        android:tag="attack"
-        android:text="@string/fight_attack"
-        app:layout_constraintEnd_toEndOf="parent"
+                android:tag="attack"
+                android:text="@string/fight_attack"
+                app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintStart_toStartOf="@id/bnHeal"
-        app:layout_constraintTop_toBottomOf="@+id/vSeparator"
+                app:layout_constraintStart_toEndOf="@id/bnHeal"
+                app:layout_constraintTop_toBottomOf="@+id/vSeparator"
 
-        />
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/faTimesSelected"

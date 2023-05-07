@@ -55,7 +55,7 @@ class FragmentListAdapter(
                 item.pbHitPoint.max = heroe.totalHitPoints
                 item.pbHitPoint.progress = heroe.currentHitPoints
                 item.heroeCell.setOnClickListener {
-                    Toast.makeText(item.root.context, "El luchador es ${heroe.name}", Toast.LENGTH_LONG).show()
+                 //   Toast.makeText(item.root.context, "El luchador es ${heroe.name}", Toast.LENGTH_LONG).show()
 
                     callback.onClick(heroe)
                 }

@@ -39,6 +39,7 @@ class FightFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFightBinding.inflate(inflater)
+        setCardPropperties(container)
 
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -76,6 +77,22 @@ class FightFragment : Fragment() {
         val toastString = getString(R.string.times_selected_string)
 
         Toast.makeText(context, "$heroeName, $toastString  $timesSelected" , Toast.LENGTH_LONG).show()
+
+    }
+
+    private fun setCardPropperties(aux: ViewGroup?){
+
+        aux?.let {
+            val maxWidth  =(it.measuredWidth*3)/4
+            binding.ivFighter.maxWidth = maxWidth
+            binding.ivFighter.minimumWidth = maxWidth
+
+            binding.ivFighter.maxHeight = maxWidth
+            binding.ivFighter.minimumHeight = maxWidth
+        }
+
+
+
 
     }
 
