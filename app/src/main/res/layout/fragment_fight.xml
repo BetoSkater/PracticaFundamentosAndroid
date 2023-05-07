@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AA6C6C"
+    android:background="@color/white"
     tools:context=".FightFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/tvFigterName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fight fragment"
+        android:background="@color/blue_dragon"
         android:fontFamily="@font/ka1"
+        android:padding="10dp"
+        android:text="Fight fragment"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="25sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent
-"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/pbFighterHitPoints"
@@ -28,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toBottomOf="@+id/tvFigterName"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFigterName"
 
         tools:layout_editor_absoluteX="168dp"
         tools:layout_editor_absoluteY="99dp" />
@@ -40,10 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxHeight="500dp"
-        app:layout_constraintTop_toBottomOf="@+id/pbFighterHitPoints"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbFighterHitPoints"
 
 
         tools:src="@tools:sample/avatars" />
@@ -53,10 +54,9 @@
         android:layout_width="wrap_content"
         android:layout_height="5dp"
         android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/ivFighter"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFighter"
 
 
         tools:layout_editor_absoluteX="0dp"
@@ -68,12 +68,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green_dragon"
+        android:tag="heal"
         android:text="@string/fight_heal"
         app:layout_constraintEnd_toEndOf="@id/bnAtack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSeparator"
-        android:tag="heal"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/vSeparator" />
 
     <Button
         android:id="@+id/bnAtack"
@@ -81,12 +80,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/red_dragon"
 
+        android:tag="attack"
         android:text="@string/fight_attack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/bnHeal"
 
+        app:layout_constraintStart_toStartOf="@id/bnHeal"
         app:layout_constraintTop_toBottomOf="@+id/vSeparator"
-        android:tag="attack"
 
         />
 
@@ -94,12 +93,13 @@
         android:id="@+id/faTimesSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:clickable="true"
         android:src="@mipmap/timeline_selection"
+        app:backgroundTint="@color/orange_dragon"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

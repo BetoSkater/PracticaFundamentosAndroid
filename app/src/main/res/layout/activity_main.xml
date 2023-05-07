@@ -72,9 +72,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="@string/login_login"
                 android:fontFamily="@font/ka1"
-                />
+                android:text="@string/login_login"
+                app:backgroundTint="@color/blue_dragon" />
 
         </LinearLayout>
 

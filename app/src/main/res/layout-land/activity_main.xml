@@ -71,9 +71,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="LogIn"
+                android:background="@color/blue_dragon"
                 android:fontFamily="@font/ka1"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:text="LogIn"
+                app:backgroundTint="@color/blue_dragon" />
 
 
         </LinearLayout>

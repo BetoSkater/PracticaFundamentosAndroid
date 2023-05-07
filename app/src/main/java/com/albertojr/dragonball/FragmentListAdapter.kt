@@ -25,6 +25,12 @@ class FragmentListAdapter(
             viewType: Int
         ): HeroesListFragmentViewHolder {
             val binding = HeroeCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val maxWidth = parent.measuredWidth/2
+            binding.ivHeroePicture.maxWidth = maxWidth
+            binding.ivHeroePicture.minimumWidth = maxWidth
+            binding.ivHeroePicture.maxHeight = maxWidth
+            binding.ivHeroePicture.minimumHeight = maxWidth
+
             return HeroesListFragmentViewHolder(binding, callback)
         }
 
@@ -58,10 +64,13 @@ class FragmentListAdapter(
                     item.ivHeroePicture.foreground = ContextCompat.getDrawable(item.ivHeroePicture.context, R.drawable.dead_character_filter)
                     item.ivHeroePicture.alpha = 0.6F
                     item.heroeCell.isClickable = false
+                    item.tvName.setTextColor(ContextCompat.getColor(item.tvName.context,R.color.red_dragon))
+
                 }else{
                     item.ivHeroePicture.foreground = ContextCompat.getDrawable(item.ivHeroePicture.context, R.drawable.gradient)
                     item.ivHeroePicture.alpha = 1.0F
                     item.heroeCell.isClickable = true
+                    item.tvName.setTextColor(ContextCompat.getColor(item.tvName.context,R.color.white))
                 }
 
 
