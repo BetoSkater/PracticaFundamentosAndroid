@@ -2,25 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clFightFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_dragon"
-    tools:context=".FightFragment"
-    android:id="@+id/clFightFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".Core.ViewController.Fragments.FightFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvFightHeroeCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange_dragon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="10dp"
         app:cardCornerRadius="15dp"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -46,13 +44,12 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-
+                android:indeterminateTint="@color/red_dragon"
+                android:progressBackgroundTint="@color/black"
+                android:progressTint="@color/green_dragon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFigterName"
-                android:progressBackgroundTint="@color/black"
-                android:progressTint="@color/green_dragon"
-                android:indeterminateTint="@color/red_dragon"
                 tools:layout_editor_absoluteX="168dp"
                 tools:layout_editor_absoluteY="99dp" />
 
@@ -60,11 +57,11 @@
                 android:id="@+id/ivFighter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pbFighterHitPoints"
-                android:scaleType="centerCrop"
-
                 tools:src="@tools:sample/avatars" />
 
             <View
@@ -75,8 +72,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivFighter"
-
-
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="413dp" />
 
@@ -86,6 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/green_dragon"
+                android:fontFamily="@font/ka1"
                 android:tag="heal"
                 android:text="@string/fight_heal"
                 app:layout_constraintEnd_toStartOf="@id/bnAtack"
@@ -97,15 +93,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red_dragon"
-
+                android:fontFamily="@font/ka1"
                 android:tag="attack"
                 android:text="@string/fight_attack"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintStart_toEndOf="@id/bnHeal"
-                app:layout_constraintTop_toBottomOf="@+id/vSeparator"
-
-                />
+                app:layout_constraintTop_toBottomOf="@+id/vSeparator"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -120,7 +113,8 @@
         android:src="@mipmap/timeline_selection"
         app:backgroundTint="@color/orange_dragon"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="TODO" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

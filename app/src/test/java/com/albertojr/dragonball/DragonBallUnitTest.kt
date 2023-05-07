@@ -1,8 +1,8 @@
 package com.albertojr.dragonball
 
-import android.util.Patterns
-import android.webkit.URLUtil
-import com.squareup.picasso.Picasso
+import com.albertojr.dragonball.Core.Model.Heroe
+import com.albertojr.dragonball.Core.Model.HeroeDTO
+import com.albertojr.dragonball.Core.ViewModel.CoreViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch

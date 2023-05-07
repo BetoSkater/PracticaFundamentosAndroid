@@ -1,4 +1,4 @@
-package com.albertojr.dragonball
+package com.albertojr.dragonball.Core.Model
 
 data class HeroeDTO(
     val photo: String,

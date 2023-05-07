@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/fondo4"
-    tools:context=".HeroesListFragment">
+    tools:context=".Core.ViewController.Fragments.HeroesListFragment">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,9 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@color/blue_dragon"
         android:clickable="true"
-
         android:foregroundTint="@color/orange_dragon"
-
         android:src="@mipmap/stethoscope"
         android:tint="#FF9800"
         app:backgroundTint="@color/orange_dragon"

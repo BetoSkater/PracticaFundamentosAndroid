@@ -1,4 +1,4 @@
-package com.albertojr.dragonball
+package com.albertojr.dragonball.Core.Model
 
 
 data class Heroe(
@@ -7,8 +7,8 @@ data class Heroe(
     val favorite: Boolean,
     val description: String,
     val name: String,
-    var totalHitPoints : Int = 100,
-    var currentHitPoints : Int = 100,
-    var isDead : Boolean = false,
+    var totalHitPoints: Int = 100,
+    var currentHitPoints: Int = 100,
+    var isDead: Boolean = false,
     var timesSlected: Int = 0
 )

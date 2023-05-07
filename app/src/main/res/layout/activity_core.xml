@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CoreActivity"
     android:background="@color/blue_dragon"
+    tools:context=".CoreActivity"
 
     >
 
@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/ka1"
         android:text="@string/heroes_list_title"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/fFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#8694EA"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     android:background="@mipmap/fondo4"
     android:orientation="horizontal"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".Login.ViewController.LoginActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvLogin"
@@ -16,7 +16,6 @@
         android:layout_gravity="center"
         android:backgroundTint="#CCFDFDFD"
         android:elevation="10dp">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,14 +31,13 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-
                 <EditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Email"
                     android:fontFamily="@font/karma_future"
+                    android:hint="Email"
                     android:inputType="textEmailAddress" />
 
                 <EditText
@@ -47,22 +45,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Password"
-                    android:inputType="textPassword"
                     android:fontFamily="monospace"
-                    />
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+
                 <Switch
                     android:id="@+id/swSave"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="@string/store_user_login"
                     android:fontFamily="@font/ka1"
-
-
-
-                    />
+                    android:text="@string/store_user_login" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -76,10 +70,6 @@
                 android:padding="10dp"
                 android:text="LogIn"
                 app:backgroundTint="@color/blue_dragon" />
-
-
         </LinearLayout>
-
     </com.google.android.material.card.MaterialCardView>
-
 </FrameLayout>
